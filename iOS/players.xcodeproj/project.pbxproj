@@ -13,6 +13,8 @@
 		763755B223425D5500CCA9DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 763755B123425D5500CCA9DD /* Assets.xcassets */; };
 		763755B523425D5500CCA9DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 763755B323425D5500CCA9DD /* LaunchScreen.storyboard */; };
 		763755C023425D5500CCA9DD /* playersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763755BF23425D5500CCA9DD /* playersTests.swift */; };
+		763755CB23427CAF00CCA9DD /* SharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763755CA23427CAF00CCA9DD /* SharedCode.framework */; };
+		763755CC23427CAF00CCA9DD /* SharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 763755CA23427CAF00CCA9DD /* SharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		763755CD23427CAF00CCA9DD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				763755CC23427CAF00CCA9DD /* SharedCode.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		763755A723425D5400CCA9DD /* players.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = players.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		763755AA23425D5400CCA9DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +52,7 @@
 		763755BB23425D5500CCA9DD /* playersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		763755BF23425D5500CCA9DD /* playersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playersTests.swift; sourceTree = "<group>"; };
 		763755C123425D5500CCA9DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		763755CA23427CAF00CCA9DD /* SharedCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SharedCode.framework; path = "../Android/SharedCode/build/xcode-frameworks/SharedCode.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				763755CB23427CAF00CCA9DD /* SharedCode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +77,7 @@
 		7637559E23425D5400CCA9DD = {
 			isa = PBXGroup;
 			children = (
+				763755CA23427CAF00CCA9DD /* SharedCode.framework */,
 				763755A923425D5400CCA9DD /* players */,
 				763755BE23425D5500CCA9DD /* playersTests */,
 				763755A823425D5400CCA9DD /* Products */,
@@ -103,9 +122,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 763755C423425D5500CCA9DD /* Build configuration list for PBXNativeTarget "players" */;
 			buildPhases = (
+				763755CE23427CFA00CCA9DD /* Prepare shared code */,
 				763755A323425D5400CCA9DD /* Sources */,
 				763755A423425D5400CCA9DD /* Frameworks */,
 				763755A523425D5400CCA9DD /* Resources */,
+				763755CD23427CAF00CCA9DD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -192,6 +213,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		763755CE23427CFA00CCA9DD /* Prepare shared code */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare shared code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/../Android/SharedCode/build/xcode-frameworks\"\n./gradlew :SharedCode:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		763755A323425D5400CCA9DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -277,6 +319,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Android/SharedCode/build/xcode-frameworks";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -338,6 +381,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Android/SharedCode/build/xcode-frameworks";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
