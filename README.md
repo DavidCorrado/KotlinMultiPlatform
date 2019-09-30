@@ -1,5 +1,5 @@
 # KotlinMultiplatform
-A basic kotlin multi platform example to provide POC
+A basic kotlin multiplatform example to provide POC
 
 # Goals
 1) Create Hello World PR 
