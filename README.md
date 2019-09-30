@@ -1,4 +1,4 @@
-# KotlinMultiPlatform
+# KotlinMultiplatform
 A basic kotlin multi platform example to provide POC
 
 # Goals
