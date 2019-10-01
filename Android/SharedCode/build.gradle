@@ -15,16 +15,16 @@ kotlin {
 
     sourceSets.commonMain.dependencies {
         implementation deps.kotlin.stdlib.common
-        implementation "com.github.florent37:multiplatform-livedata:0.0.5"
+        implementation "com.github.florent37:multiplatform-livedata:${versions.multiplatform_livedata}"
     }
 
     sourceSets.androidMain.dependencies {
         implementation deps.kotlin.stdlib.jdk
-        implementation "com.github.florent37:multiplatform-livedata-android:0.0.5"
+        implementation "com.github.florent37:multiplatform-livedata-android:${versions.multiplatform_livedata}"
     }
 
     sourceSets.iosMain.dependencies {
-        implementation "com.github.florent37:multiplatform-livedata-ios:0.0.5"
+        implementation "com.github.florent37:multiplatform-livedata-ios:${versions.multiplatform_livedata}"
     }
 }
 

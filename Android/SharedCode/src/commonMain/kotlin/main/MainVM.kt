@@ -3,11 +3,11 @@ package com.example.players.main
 import com.example.players.BaseViewModel
 import com.example.players.platformName
 import com.github.florent37.livedata.KLiveData
-import com.github.florent37.livedata.KMediatorLiveData
+import com.github.florent37.livedata.KMutableLiveData
 
 class MainVM : BaseViewModel() {
 
-    private val _name = KMediatorLiveData<String>()
+    private val _name = KMutableLiveData<String>()
     val name: KLiveData<String>
         get() = _name
 
