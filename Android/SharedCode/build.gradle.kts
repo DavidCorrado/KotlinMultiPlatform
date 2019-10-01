@@ -24,10 +24,16 @@ kotlin {
 
     sourceSets["commonMain"].dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
+        implementation("com.github.florent37:multiplatform-livedata:0.0.5")
     }
 
     sourceSets["androidMain"].dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        implementation("com.github.florent37:multiplatform-livedata-android:0.0.5")
+    }
+
+    sourceSets["iosMain"].dependencies {
+        implementation("com.github.florent37:multiplatform-livedata-ios:0.0.5")
     }
 }
 
