@@ -9,4 +9,8 @@ abstract class BaseViewModel {
     fun onDisappeared() {
 
     }
+
+    fun onCleared() {
+
+    }
 }

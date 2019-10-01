@@ -1,7 +1,9 @@
-package com.example.players
+package com.example.players.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.players.R
+import com.example.players.createApplicationScreenMessage
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
