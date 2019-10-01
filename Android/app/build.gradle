@@ -1,19 +1,9 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
+apply from: "$rootProject.projectDir/common-android.gradle"
 android {
-    compileSdkVersion 29
-    defaultConfig {
-        applicationId "com.example.players"
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
     buildTypes {
         release {
             minifyEnabled false
