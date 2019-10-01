@@ -1,8 +1,20 @@
 apply plugin: 'kotlin-multiplatform'
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+    }
+}
 
 kotlin {
-    //select iOS target platform depending on the Xcode environment variables
     targets {
+        android()
+
+        //select iOS target platform depending on the Xcode environment variables
         def iosPreset = System.getenv('SDK_NAME')?.startsWith("iphoneos") ? presets.iosArm64 : presets.iosX64
         fromPreset(iosPreset, 'ios') {
             binaries.framework {
@@ -10,8 +22,6 @@ kotlin {
             }
         }
     }
-
-    jvm("android")
 
     sourceSets.commonMain.dependencies {
         implementation deps.kotlin.stdlib.common
