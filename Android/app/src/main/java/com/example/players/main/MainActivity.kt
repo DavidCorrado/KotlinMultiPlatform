@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.players.R
+import com.github.florent37.livedata.observe
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         val viewmodel = ViewModelProviders.of(this)[MainAndroidVM::class.java]
 
-//        viewmodel.kvm.name
+        viewmodel.kvm.name.observe(this) {
+            tv_main.text = it
+        }
     }
 }
