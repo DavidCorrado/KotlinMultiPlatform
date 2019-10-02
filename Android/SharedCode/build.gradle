@@ -29,6 +29,10 @@ kotlin {
 
     sourceSets.androidMain.dependencies {
         implementation deps.kotlin.stdlib.jdk
+        implementation deps.lifecycle
+    }
+
+    sourceSets.iosMain.dependencies {
     }
 }
 

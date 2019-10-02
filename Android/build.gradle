@@ -3,10 +3,11 @@
 buildscript {
 
     ext.versions = [
-            'kotlin': '1.3.50',
             'compileSdkVersion': 29,
             'minSdkVersion': 23,
             'targetSdkVersion': 29,
+            'kotlin': '1.3.50',
+            'lifecycle': '2.1.0',
     ]
     ext.deps = [
             'kotlin': [
@@ -14,9 +15,11 @@ buildscript {
                             'common': "org.jetbrains.kotlin:kotlin-stdlib-common:${versions.kotlin}",
                             'jdk'   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
                     ]
-            ]
+            ],
+            'lifecycle': "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
     ]
     repositories {
+
         google()
         jcenter()
 
