@@ -40,6 +40,7 @@ kotlin {
         implementation deps.ktor.androidCore
         implementation deps.serialization.jvmRuntime
         implementation deps.ktor.androidSerialization
+        implementation deps.lifecycle
     }
 
     sourceSets.iosMain.dependencies {

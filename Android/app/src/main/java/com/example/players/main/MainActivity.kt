@@ -1,12 +1,10 @@
-package com.example.players
+package com.example.players.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.example.players.api.PlayersAPI
-import io.ktor.client.engine.okhttp.OkHttpConfig
-import io.ktor.client.engine.okhttp.OkHttpEngine
-import io.ktor.util.InternalAPI
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import com.example.players.R
+import com.example.players.live_data.observe
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -21,6 +19,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val viewmodel = ViewModelProviders.of(this)[MainAndroidVM::class.java]
+
+        viewmodel.kvm.name.observe(this) {
+            tv_main.text = it
+        }
         tv_main.text = createApplicationScreenMessage()
 
         val playersAPI = PlayersAPI(OkHttpEngine(OkHttpConfig()))
