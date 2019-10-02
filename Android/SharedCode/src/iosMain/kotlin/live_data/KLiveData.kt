@@ -1,4 +1,4 @@
-package com.example.players
+package com.example.players.live_data
 
 actual open class KLiveData<T> {
 

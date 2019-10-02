@@ -1,4 +1,4 @@
-package com.example.players
+package com.example.players.live_data
 
 fun <X, Y> KLiveData<X>.map(mapFunction: (X) -> Y): KLiveData<Y> {
     return Transformations.map(this, mapFunction)

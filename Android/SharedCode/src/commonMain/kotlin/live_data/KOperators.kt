@@ -1,4 +1,4 @@
-package com.example.players
+package com.example.players.live_data
 
 fun <A, B> zip(a: KLiveData<A>, b: KLiveData<B>): KLiveData<Pair<A, B>> {
     return KMediatorLiveData<Pair<A, B>>().apply {
