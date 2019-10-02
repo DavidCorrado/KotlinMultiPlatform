@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.players.BaseFragment
 import com.example.players.R
 import com.example.players.live_data.observe
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : BaseFragment<MainAndroidVM>() {
 
