@@ -1,16 +1,24 @@
 package com.example.players
 
-abstract class BaseViewModel {
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
 
-    fun onAppeared() {
+abstract class BaseViewModel : CoroutineScope {
+
+    private val job = Job()
+    override val coroutineContext: CoroutineContext = job + Main
+
+    open fun onAppeared() {
 
     }
 
-    fun onDisappeared() {
+    open fun onDisappeared() {
 
     }
 
-    fun onCleared() {
-
+    open fun onCleared() {
+        job.cancel()
     }
 }
