@@ -25,16 +25,14 @@ kotlin {
 
     sourceSets.commonMain.dependencies {
         implementation deps.kotlin.stdlib.common
-        implementation "com.github.florent37:multiplatform-livedata:${versions.multiplatform_livedata}"
     }
 
     sourceSets.androidMain.dependencies {
+        implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
         implementation deps.kotlin.stdlib.jdk
-        implementation "com.github.florent37:multiplatform-livedata-android:${versions.multiplatform_livedata}"
     }
 
     sourceSets.iosMain.dependencies {
-        implementation "com.github.florent37:multiplatform-livedata-ios:${versions.multiplatform_livedata}"
     }
 }
 

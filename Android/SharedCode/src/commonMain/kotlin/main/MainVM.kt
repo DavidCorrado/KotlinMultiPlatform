@@ -1,9 +1,9 @@
 package com.example.players.main
 
 import com.example.players.BaseViewModel
+import com.example.players.KLiveData
+import com.example.players.KMutableLiveData
 import com.example.players.platformName
-import com.github.florent37.livedata.KLiveData
-import com.github.florent37.livedata.KMutableLiveData
 
 class MainVM : BaseViewModel() {
 
