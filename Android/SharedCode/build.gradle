@@ -1,5 +1,6 @@
 apply plugin: 'kotlin-multiplatform'
 apply plugin: 'com.android.library'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
@@ -25,14 +26,31 @@ kotlin {
 
     sourceSets.commonMain.dependencies {
         implementation deps.kotlin.stdlib.common
+        implementation deps.kotlin.coroutines.common
+        implementation deps.ktor.commonCore
+        implementation deps.ktor.commonJson
+        implementation deps.serialization.commonRuntime
+        implementation deps.ktor.commonSerialization
     }
 
     sourceSets.androidMain.dependencies {
-        implementation deps.kotlin.stdlib.jdk
+        implementation deps.kotlin.coroutines.jdk
+        implementation deps.kotlin.coroutines.android
+        implementation deps.ktor.jvmCore
+        implementation deps.ktor.jvmJson
+        implementation deps.ktor.androidCore
+        implementation deps.serialization.jvmRuntime
+        implementation deps.ktor.androidSerialization
         implementation deps.lifecycle
     }
 
     sourceSets.iosMain.dependencies {
+        implementation deps.kotlin.coroutines.native
+        implementation deps.ktor.ios
+        implementation deps.ktor.iosCore
+        implementation deps.ktor.iosJson
+        implementation deps.serialization.iosRuntime
+        implementation deps.ktor.iosSerialization
     }
 }
 
