@@ -10,7 +10,7 @@ import UIKit
 import SharedCode
 
 class BaseViewController<VM: BaseViewModel>: UIViewController {
-    
+
     public var viewModel: VM?
     var lifecycle = KLifecycle()
     
