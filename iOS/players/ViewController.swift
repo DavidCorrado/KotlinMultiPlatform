@@ -9,9 +9,7 @@
 import UIKit
 import SharedCode
 
-class ViewController: UIViewController {
-    
-    var lifecycle = KLifecycle()
+class ViewController: BaseViewController {
     
     lazy var viewModel: MainVM = {
         MainVM()
@@ -19,7 +17,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        lifecycle.start()
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
         label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
@@ -29,11 +26,6 @@ class ViewController: UIViewController {
         viewModel.name.observe(lifecycle: lifecycle) { value in
             label.text = value as? String
         }
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        lifecycle.stop()
     }
 }
 
