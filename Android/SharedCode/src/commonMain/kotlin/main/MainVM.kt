@@ -1,16 +1,30 @@
 package com.example.players.main
 
 import com.example.players.BaseViewModel
+import com.example.players.api.PlayersAPI
 import com.example.players.live_data.KLiveData
 import com.example.players.live_data.KMutableLiveData
-import com.example.players.platformName
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MainVM : BaseViewModel() {
+class MainVM(private val playersAPI: PlayersAPI) : BaseViewModel() {
 
     private val _name = KMutableLiveData<String>()
     val name: KLiveData<String> = _name
 
-    init {
-        _name.value = "Kotlin Rocks on ${platformName()}"
+    override fun onAppeared() {
+        super.onAppeared()
+
+        launch(Main) {
+            try {
+                val result = withContext(Dispatchers.Default) { playersAPI.fetchPlayer() }
+                _name.value = result.name
+            } catch (e: Exception) {
+                _name.value = e.message
+            }
+        }
     }
+
 }

@@ -1,3 +1,8 @@
 package com.example.players
 
-actual fun platformName(): String { return "Android" }
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.okhttp.OkHttp
+
+actual val httpClientEngine: HttpClientEngine by lazy {
+    OkHttp.create {}
+}

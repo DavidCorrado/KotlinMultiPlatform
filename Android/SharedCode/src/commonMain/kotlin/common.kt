@@ -1,3 +1,5 @@
 package com.example.players
 
-expect fun platformName(): String
+import io.ktor.client.engine.HttpClientEngine
+
+internal expect val httpClientEngine: HttpClientEngine

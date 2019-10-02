@@ -1,8 +1,6 @@
 package com.example.players
-import platform.UIKit.UIDevice
 
-actual fun platformName(): String {
-return UIDevice.currentDevice.systemName() +
-" " +
-UIDevice.currentDevice.systemVersion
-}
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.ios.Ios
+
+actual val httpClientEngine: HttpClientEngine by lazy { Ios.create() }
