@@ -3,18 +3,45 @@
 buildscript {
 
     ext.versions = [
-            'kotlin': '1.3.50',
             'compileSdkVersion': 29,
             'minSdkVersion': 23,
             'targetSdkVersion': 29,
+            'kotlin'          : '1.3.50',
+            'kotlinCoroutines': '1.3.2',
+            'ktor'            : '1.2.5',
+            'serialization'   : '0.13.0',
     ]
     ext.deps = [
-            'kotlin': [
-                    'stdlib': [
+            'kotlin'       : [
+                    'stdlib'    : [
                             'common': "org.jetbrains.kotlin:kotlin-stdlib-common:${versions.kotlin}",
                             'jdk'   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
-                    ]
-            ]
+                    ],
+                    'coroutines': [
+                            'common' : "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${versions.kotlinCoroutines}",
+                            'jdk'    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}",
+                            'native' : "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${versions.kotlinCoroutines}",
+                            'android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}",
+                    ],
+            ],
+            'ktor'         : [
+                    'commonCore'         : "io.ktor:ktor-client-core:${versions.ktor}",
+                    'commonJson'         : "io.ktor:ktor-client-json:${versions.ktor}",
+                    'commonSerialization': "io.ktor:ktor-client-serialization:${versions.ktor}",
+                    'androidSerialization':"io.ktor:ktor-client-serialization-jvm:${versions.ktor}",
+                    'iosSerialization':"io.ktor:ktor-client-serialization-native:${versions.ktor}",
+                    'jvmCore'            : "io.ktor:ktor-client-core-jvm:${versions.ktor}",
+                    'androidCore'        : "io.ktor:ktor-client-okhttp:${versions.ktor}",
+                    'jvmJson'            : "io.ktor:ktor-client-json-jvm:${versions.ktor}",
+                    'ios'                : "io.ktor:ktor-client-ios:${versions.ktor}",
+                    'iosCore'            : "io.ktor:ktor-client-core-native:${versions.ktor}",
+                    'iosJson'            : "io.ktor:ktor-client-json-native:${versions.ktor}"
+            ],
+            'serialization': [
+                    'commonRuntime': "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${versions.serialization}",
+                    'jvmRuntime'   : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${versions.serialization}",
+                    'iosRuntime'   : "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${versions.serialization}",
+            ],
     ]
     repositories {
         google()
@@ -24,6 +51,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$versions.kotlin"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
