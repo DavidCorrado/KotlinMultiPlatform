@@ -28,8 +28,8 @@ kotlin {
     }
 
     sourceSets.androidMain.dependencies {
-        implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
         implementation deps.kotlin.stdlib.jdk
+        implementation deps.lifecycle
     }
 
     sourceSets.iosMain.dependencies {

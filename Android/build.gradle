@@ -15,9 +15,9 @@ buildscript {
                     'stdlib': [
                             'common': "org.jetbrains.kotlin:kotlin-stdlib-common:${versions.kotlin}",
                             'jdk'   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
-                    ],
-                    'lifecycle': "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
-            ]
+                    ]
+            ],
+            'lifecycle': "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
     ]
     repositories {
 
