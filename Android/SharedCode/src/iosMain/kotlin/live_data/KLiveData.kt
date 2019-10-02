@@ -6,7 +6,7 @@ actual open class KLiveData<T> {
     private val foreverLiveDataObservers = mutableMapOf<KLiveData<*>, MutableList<(T) -> Unit>>()
     private val lifecycleObservers = mutableMapOf<KLifecycle, KLifecycleAndObserver<T>>()
 
-    internal var _value : T? = null
+    internal var _value: T? = null
         set(value) {
             field = value
             notifyObservers()
@@ -15,7 +15,7 @@ actual open class KLiveData<T> {
     actual open val value: T?
         get() = _value
 
-    fun removeObserveForever(block: (T) -> Unit){
+    fun removeObserveForever(block: (T) -> Unit) {
         foreverObservers.remove(block)
     }
 
@@ -29,7 +29,7 @@ actual open class KLiveData<T> {
 
     internal fun addLiveDataObserver(liveDataObserver: KLiveData<*>, block: (T) -> Unit) {
         var listObservers = foreverLiveDataObservers.get(liveDataObserver)
-        if(listObservers == null){
+        if (listObservers == null) {
             foreverLiveDataObservers[liveDataObserver] = mutableListOf(block)
         } else {
             listObservers.add(block)
@@ -41,10 +41,11 @@ actual open class KLiveData<T> {
             block(it)
         }
     }
+
     internal fun removeLiveDataObserver(liveDataObserver: KLiveData<*>) {
         var listObservers = foreverLiveDataObservers.get(liveDataObserver)
-        if(listObservers != null){
-            listObservers.forEach{
+        if (listObservers != null) {
+            listObservers.forEach {
                 foreverObservers.remove(it)
             }
             listObservers.clear()
@@ -60,7 +61,7 @@ actual open class KLiveData<T> {
         this.addObserver(lifecycle, block)
     }
 
-    internal fun notifyObservers(){
+    internal fun notifyObservers() {
         value?.let { value ->
             foreverObservers.forEach {
                 it(value)
@@ -73,9 +74,9 @@ actual open class KLiveData<T> {
         }
     }
 
-    internal fun addObserver(lifecycle: KLifecycle, block: (T) -> Unit){
+    internal fun addObserver(lifecycle: KLifecycle, block: (T) -> Unit) {
         var lifecycleAndObserver = this.lifecycleObservers.get(lifecycle)
-        if(lifecycleAndObserver == null){
+        if (lifecycleAndObserver == null) {
             lifecycleAndObserver = KLifecycleAndObserver(lifecycle)
 
             lifecycle.addStopObserver {
