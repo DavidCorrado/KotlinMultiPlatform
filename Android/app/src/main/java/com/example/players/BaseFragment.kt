@@ -2,7 +2,7 @@ package com.example.players
 
 import androidx.fragment.app.Fragment
 
-open class BaseFragment<VM : BaseAndroidVM<*>> : Fragment() {
+abstract class BaseFragment<VM : BaseAndroidVM<*>> : Fragment() {
 
     protected lateinit var viewModel: VM
 

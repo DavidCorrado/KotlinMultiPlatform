@@ -9,21 +9,18 @@
 import UIKit
 import SharedCode
 
-class ViewController: BaseViewController {
-    
-    lazy var viewModel: MainVM = {
-        MainVM()
-    }()
+class ViewController: BaseViewController<MainVM> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = MainVM()
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
         label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
         label.font = label.font.withSize(25)
         view.addSubview(label)
         
-        viewModel.name.observe(lifecycle: lifecycle) { value in
+        viewModel!.name.observe(lifecycle: lifecycle) { value in
             label.text = value as? String
         }
     }
