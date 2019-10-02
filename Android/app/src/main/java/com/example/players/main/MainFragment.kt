@@ -18,8 +18,6 @@ import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class MainFragment : BaseFragment<MainAndroidVM>(), CoroutineScope {
-
-
     private val job = Job()
     override val coroutineContext: CoroutineContext
         get() = job
