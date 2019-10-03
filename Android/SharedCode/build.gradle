@@ -24,14 +24,10 @@ kotlin {
         }
     }
 
-    sourceSets {
-        all {
-            languageSettings {
-                useExperimentalAnnotation('kotlin.Experimental')
-            }
-        }
+    sourceSets.all.languageSettings {
+        useExperimentalAnnotation('kotlin.Experimental')
     }
-
+    
     sourceSets.commonMain.dependencies {
         implementation deps.kotlin.stdlib.common
         implementation deps.kotlin.coroutines.common

@@ -18,7 +18,6 @@ class MainVM(private val playersAPI: PlayersAPI) : BaseViewModel() {
     val players: KLiveData<List<Player>> = _players
 
 
-    @UseExperimental(UnstableDefault::class)
     override fun onAppeared() {
         super.onAppeared()
 
