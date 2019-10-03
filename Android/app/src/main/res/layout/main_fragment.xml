@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".main.MainFragment">
 
-    <TextView
+    <LinearLayout
         android:id="@+id/tv_main"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
