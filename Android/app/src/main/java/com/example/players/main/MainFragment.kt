@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.players.BaseFragment
 import com.example.players.R
@@ -27,8 +28,13 @@ class MainFragment : BaseFragment<MainAndroidVM>() {
 
         viewModel = ViewModelProviders.of(this)[MainAndroidVM::class.java]
 
-        viewModel.kvm.name.observe(this) {
-            tv_main.text = it
+        viewModel.kvm.players.observe(this) {
+
+            for (player in it) {
+                val textView = TextView(this.context)
+                textView.setText(player.name)
+                tv_main.addView(textView)
+            }
         }
     }
 

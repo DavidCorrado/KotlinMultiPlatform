@@ -22,11 +22,11 @@ class PlayersAPI {
     }
 
     @UnstableDefault
-    suspend fun fetchPlayer(): Player {
+    suspend fun fetchPlayer(): PlayersDoc {
         val response = client.get<HttpResponse> {
-            url("https://gist.githubusercontent.com/DavidCorrado/2012b84c6c2e5f34fe58323255dc6d45/raw/63ea2a6127004b2a37b052888b063294caded827/Player.json")
+            url("https://gist.githubusercontent.com/DavidCorrado/710931e13b21b4c067a8a75f0fdb5040/raw/bdb946375e7e4b40a0f21b8c8bb17276a75cc2c6/PlayersMin.json")
         }
         val jsonBody = response.readText()
-        return Json.parse(Player.serializer(), jsonBody)
+        return Json.parse(PlayersDoc.serializer(), jsonBody)
     }
 }
