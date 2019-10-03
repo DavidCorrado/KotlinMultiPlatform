@@ -15,7 +15,6 @@ class ViewController: BaseViewController<MainVM> {
         super.viewDidLoad()
         viewModel = MainVM()
         
-        
         viewModel!.players.observe(lifecycle: lifecycle) { value in
             guard let players = value as? [[String:String]] else {return}
             players.forEach({ [weak self] player in
@@ -28,14 +27,6 @@ class ViewController: BaseViewController<MainVM> {
                     self.view.addSubview(label)
                 }
             })
-                /*let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
-                label.center = CGPoint(x: 160, y: 285)
-                label.textAlignment = .center
-                label.font = label.font.withSize(25)
-                label.text = value as? String
-                view.addSubview(label)
-            }*/
-           
         }
     }
 }
