@@ -409,7 +409,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "/Users/oscararnaiz/Development/kotlin/hackathon/KotlinMultiplatform/Android/SharedCode/build/xcode-frameworks";
 				INFOPLIST_FILE = players/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
