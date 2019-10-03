@@ -9,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.UnstableDefault
 
 class MainVM(private val playersAPI: PlayersAPI) : BaseViewModel() {
 
