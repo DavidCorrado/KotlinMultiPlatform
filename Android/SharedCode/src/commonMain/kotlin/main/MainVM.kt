@@ -10,19 +10,21 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainVM(private val playersAPI: PlayersAPI) : BaseViewModel() {
+class MainVM() : BaseViewModel() {
 
     private val _players = KMutableLiveData<List<Player>>()
 
     val players: KLiveData<List<Player>> = _players
-
+    init {
+        _players.value = listOf(Player("David"),Player("Michael"),Player("Zach"),Player("Oscar"))
+    }
 
     override fun onAppeared() {
         super.onAppeared()
 
         launch(Main) {
             try {
-                val result = withContext(Dispatchers.Default) { playersAPI.fetchPlayer() }
+                val result = withContext(Dispatchers.Default) { PlayersAPI().fetchPlayer() }
                 _players.value = result.players
 
 

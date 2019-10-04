@@ -6,5 +6,5 @@ import io.ktor.util.InternalAPI
 
 class MainAndroidVM : BaseAndroidVM<MainVM>() {
     @InternalAPI
-    override val kvm = MainVM(PlayersAPI())
+    override val kvm = MainVM()
 }

@@ -14,7 +14,6 @@ class ViewController: BaseViewController<MainVM> {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainVM()
-        
         viewModel!.players.observe(lifecycle: lifecycle) { value in
             guard let players = value as? [[String:String]] else {return}
             players.forEach({ [weak self] player in
