@@ -28,7 +28,7 @@ actual open class KLiveData<T> {
     }
 
     internal fun addLiveDataObserver(liveDataObserver: KLiveData<*>, block: (T) -> Unit) {
-        var listObservers = foreverLiveDataObservers.get(liveDataObserver)
+        val listObservers = foreverLiveDataObservers[liveDataObserver]
         if (listObservers == null) {
             foreverLiveDataObservers[liveDataObserver] = mutableListOf(block)
         } else {
@@ -43,7 +43,7 @@ actual open class KLiveData<T> {
     }
 
     internal fun removeLiveDataObserver(liveDataObserver: KLiveData<*>) {
-        var listObservers = foreverLiveDataObservers.get(liveDataObserver)
+        val listObservers = foreverLiveDataObservers[liveDataObserver]
         if (listObservers != null) {
             listObservers.forEach {
                 foreverObservers.remove(it)
@@ -54,14 +54,14 @@ actual open class KLiveData<T> {
     }
 
     actual fun hasObservers(): Boolean {
-        return !foreverObservers.isEmpty() && !lifecycleObservers.isEmpty()
+        return foreverObservers.isNotEmpty() && lifecycleObservers.isNotEmpty()
     }
 
     actual fun observe(lifecycle: KLifecycle, block: (T) -> Unit) {
         this.addObserver(lifecycle, block)
     }
 
-    internal fun notifyObservers() {
+    private fun notifyObservers() {
         value?.let { value ->
             foreverObservers.forEach {
                 it(value)
@@ -74,14 +74,15 @@ actual open class KLiveData<T> {
         }
     }
 
-    internal fun addObserver(lifecycle: KLifecycle, block: (T) -> Unit) {
-        var lifecycleAndObserver = this.lifecycleObservers.get(lifecycle)
+    private fun addObserver(lifecycle: KLifecycle, block: (T) -> Unit) {
+        var lifecycleAndObserver = this.lifecycleObservers[lifecycle]
         if (lifecycleAndObserver == null) {
             lifecycleAndObserver = KLifecycleAndObserver(lifecycle)
 
             lifecycle.addStopObserver {
                 lifecycleObservers.remove(lifecycle)
             }
+            lifecycleObservers[lifecycle] = lifecycleAndObserver
         }
         lifecycleAndObserver.observers.add(block)
 
