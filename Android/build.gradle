@@ -11,6 +11,7 @@ buildscript {
             'ktor'             : '1.2.5',
             'serialization'    : '0.13.0',
             'lifecycle'        : '2.1.0',
+            'napier'           : '1.0.0',
     ]
     ext.deps = [
             'kotlin'       : [
@@ -43,6 +44,11 @@ buildscript {
                     'commonRuntime': "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${versions.serialization}",
                     'jvmRuntime'   : "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${versions.serialization}",
                     'iosRuntime'   : "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${versions.serialization}",
+            ],
+            'napier'       : [
+                    'common' : "com.github.aakira:napier:${versions.napier}",
+                    'android': "com.github.aakira:napier-android:${versions.napier}",
+                    'ios'    : "com.github.aakira:napier-ios:${versions.napier}",
             ],
     ]
     repositories {

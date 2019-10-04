@@ -32,7 +32,7 @@ class MainFragment : BaseFragment<MainAndroidVM>() {
 
             for (player in it) {
                 val textView = TextView(this.context)
-                textView.setText(player.name)
+                textView.text = player.name
                 tv_main.addView(textView)
             }
         }
