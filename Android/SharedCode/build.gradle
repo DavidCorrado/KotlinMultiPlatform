@@ -29,7 +29,7 @@ kotlin {
             useExperimentalAnnotation('kotlin.Experimental')
         }
     }
-    
+
     sourceSets.commonMain.dependencies {
         implementation deps.kotlin.stdlib.common
         implementation deps.kotlin.coroutines.common
@@ -37,6 +37,7 @@ kotlin {
         implementation deps.ktor.commonJson
         implementation deps.serialization.commonRuntime
         implementation deps.ktor.commonSerialization
+        implementation deps.napier.common
     }
 
     sourceSets.androidMain.dependencies {
@@ -48,6 +49,7 @@ kotlin {
         implementation deps.serialization.jvmRuntime
         implementation deps.ktor.androidSerialization
         implementation deps.lifecycle
+        implementation deps.napier.android
     }
 
     sourceSets.iosMain.dependencies {
@@ -57,6 +59,7 @@ kotlin {
         implementation deps.ktor.iosJson
         implementation deps.serialization.iosRuntime
         implementation deps.ktor.iosSerialization
+        implementation deps.napier.ios
     }
 }
 

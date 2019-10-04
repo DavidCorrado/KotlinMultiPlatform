@@ -14,17 +14,18 @@ class ViewController: BaseViewController<MainVM> {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainVM()
-        viewModel!.players.observe(lifecycle: lifecycle) { value in
-            guard let players = value as? [[String:String]] else {return}
-            players.forEach({ [weak self] player in
-                if let self = `self`, let name = player["name"] {
-                    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
-                    label.center = CGPoint(x: 160, y: 285)
-                    label.textAlignment = .center
-                    label.font = label.font.withSize(25)
-                    label.text = name
-                    self.view.addSubview(label)
-                }
+        viewModel!.players.observeForever() { value in
+            
+            guard let players = value as? [Player] else {return}
+            var padding = 0
+            players.forEach({ player in
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
+                label.center = CGPoint(x: 160, y: 100+padding)
+                label.textAlignment = .center
+                label.font = label.font.withSize(25)
+                label.text = player.name
+                self.view.addSubview(label)
+                padding = padding+50
             })
         }
     }

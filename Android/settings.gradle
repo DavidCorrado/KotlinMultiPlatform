@@ -1,3 +1,4 @@
 include ':app'
 include ':SharedCode'
 rootProject.name = 'Players'
+enableFeaturePreview('GRADLE_METADATA')
