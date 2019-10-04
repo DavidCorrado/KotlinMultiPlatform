@@ -14,7 +14,7 @@ class ViewController: BaseViewController<MainVM> {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainVM()
-        viewModel!.players.observeForever() { value in
+        viewModel!.players.observe(lifecycle: lifecycle) { value in
             
             guard let players = value as? [Player] else {return}
             var padding = 0

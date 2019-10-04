@@ -2,7 +2,7 @@ package com.example.players.live_data
 
 import androidx.lifecycle.*
 
-private val lifeCycleOwnerTag = "LifecycleOwner"
+private const val lifeCycleOwnerTag = "LifecycleOwner"
 
 actual open class KLiveData<T> {
 
