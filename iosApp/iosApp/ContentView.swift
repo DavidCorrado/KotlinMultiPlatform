@@ -2,6 +2,14 @@ import SwiftUI
 import shared
 
 func greet() -> String {
+//    TasksKVM().toDoList.collect(
+//        collector: Kotlinx_coroutines_coreFlowCollector,
+//        completionHandler: (KotlinUnit?, Error?) -> Void
+//       )
+//    TasksKVM().toDoList.collect(
+//        collector: Kotlinx_coroutines_coreFlowCollector,
+//        completionHandler: (KotlinUnit?, Error?) -> Void
+//       )
     return Greeting().greeting()
 }
 

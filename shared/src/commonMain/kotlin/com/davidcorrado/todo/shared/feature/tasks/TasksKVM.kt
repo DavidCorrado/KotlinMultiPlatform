@@ -2,12 +2,10 @@ package com.davidcorrado.todo.shared.feature.tasks
 
 import com.davidcorrado.todo.shared.data.model.Task
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 
-@ExperimentalCoroutinesApi
 class TasksKVM {
     private val _todoList = MutableStateFlow<List<Task>>(listOf())
 
