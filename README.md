@@ -1,4 +1,4 @@
 # KotlinMultiplatform
-A basic kotlin multiplatform example to provide POC
+A basic Kotlin Multiplatform example to provide a POC
 
 

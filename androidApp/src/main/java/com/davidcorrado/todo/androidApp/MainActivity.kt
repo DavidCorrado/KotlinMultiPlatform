@@ -1,20 +1,17 @@
 package com.davidcorrado.todo.androidApp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.davidcorrado.todo.shared.Greeting
-import android.widget.TextView
-
-fun greet(): String {
-    return Greeting().greeting()
-}
+import androidx.appcompat.app.AppCompatActivity
+import com.davidcorrado.todo.androidApp.tasks.TasksFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, TasksFragment())
+                .commitNow()
+        }
     }
 }
